@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: finance-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password_123
+      POSTGRES_DB: finance_db
+    ports:
+      - "5432:5432"
+    networks:
+      - local-network
+
+  api:
+    build: .
+    container_name: api_container
+    restart: always
+    depends_on:
+      - db
+    environment:
+      # Essas variáveis o Spring Boot reconhece automaticamente para configurar o DataSource
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/finance_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password_123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - "8080:8080"
+    networks:
+      - local-network
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "200m"
+
+networks:
+  local-network:
+    driver: bridge
