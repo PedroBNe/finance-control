@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 public record TransactionRequest(
     String description,
     BigDecimal amount,
-    LocalDateTime date,
-    Long user
+    LocalDateTime date
 ) {
 }
