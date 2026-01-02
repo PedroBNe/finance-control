@@ -17,24 +17,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "transactions")
+@Table(name = "categories")
 @Getter @Setter
-public class Transaction {
+public class Category {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
+    private String name;
 
-    private BigDecimal amount;
-
-    private LocalDateTime transactionDate;
     private TransactionType type;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    
+    private BigDecimal budgetLimit;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
