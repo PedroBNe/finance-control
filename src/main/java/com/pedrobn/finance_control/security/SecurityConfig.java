@@ -48,6 +48,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
             "http://localhost:3000",
             "http://localhost:5173",
+            "http://localhost:80",
             "http://p8s4wo8wo0ogsggc0kswgkcs.31.97.163.104.sslip.io"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
