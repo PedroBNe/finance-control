@@ -49,7 +49,8 @@ public class SecurityConfig {
             "http://localhost:3000",
             "http://localhost:5173",
             "http://localhost:80",
-            "http://p8s4wo8wo0ogsggc0kswgkcs.31.97.163.104.sslip.io"
+            "http://p8s4wo8wo0ogsggc0kswgkcs.31.97.163.104.sslip.io",
+            "http://y0wkss4gwowggw0sg48g0s8s.31.97.163.104.sslip.io"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
